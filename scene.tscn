@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://bf3dn6chha48g"]
+
+[ext_resource type="Script" uid="uid://wf1e6ibe4k6x" path="res://scene_loader.gd" id="1_nxogm"]
+[ext_resource type="PackedScene" uid="uid://6gdup8g58jo7" path="res://ui.tscn" id="1_ulcgi"]
+[ext_resource type="Script" uid="uid://c7jap6i78e3po" path="res://flycamera.gd" id="2_3253y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nxogm"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_3253y"]
+sky_material = SubResource("ProceduralSkyMaterial_nxogm")
+
+[sub_resource type="Environment" id="Environment_u3cyc"]
+background_mode = 2
+sky = SubResource("Sky_3253y")
+tonemap_mode = 2
+
+[sub_resource type="Shader" id="Shader_nxogm"]
+code = "shader_type spatial;
+
+uniform sampler2D ortho: source_color;
+uniform sampler2D heightmap;
+
+void vertex() {
+	VERTEX.y = texture(heightmap, UV).r * 2.50;
+}
+
+void fragment() {
+	ALBEDO = texture(ortho, UV).rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3253y"]
+render_priority = 0
+shader = SubResource("Shader_nxogm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nxogm"]
+material = SubResource("ShaderMaterial_3253y")
+size = Vector2(100, 100)
+subdivide_width = 500
+subdivide_depth = 500
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_nxogm")
+heightmap_data_path = "assets/Ukraine  elevation m_1.png"
+ortho_data_path = "assets/World Imagery_DBFA218E332.png"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u3cyc")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.306842, 0.951761, 0, -0.951761, 0.306842, 0, 104.748, 37.6528)
+script = ExtResource("2_3253y")
+
+[node name="Control" parent="Camera3D" instance=ExtResource("1_ulcgi")]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nxogm")
