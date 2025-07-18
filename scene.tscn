@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf3dn6chha48g"]
+[gd_scene load_steps=12 format=3 uid="uid://bf3dn6chha48g"]
 
 [ext_resource type="Script" uid="uid://wf1e6ibe4k6x" path="res://scene_loader.gd" id="1_nxogm"]
 [ext_resource type="PackedScene" uid="uid://6gdup8g58jo7" path="res://ui.tscn" id="1_ulcgi"]
 [ext_resource type="Script" uid="uid://c7jap6i78e3po" path="res://flycamera.gd" id="2_3253y"]
+[ext_resource type="ArrayMesh" uid="uid://df1eoiw7jlwbq" path="res://kakhovka dam v5.obj" id="4_u3cyc"]
+[ext_resource type="PackedScene" uid="uid://dug4csgspwv40" path="res://kakhovka dam test 2.glb" id="5_m7jmp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nxogm"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -53,11 +55,23 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.306842, 0.951761, 0, -0.951761, 0.306842, 0, 104.748, 37.6528)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -19.0205, 53.2722, 1.46729)
 script = ExtResource("2_3253y")
 
 [node name="Control" parent="Camera3D" instance=ExtResource("1_ulcgi")]
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="map" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_nxogm")
+
+[node name="dam" type="Node3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 visible = false
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_nxogm")
+[node name="dam_mesh" type="MeshInstance3D" parent="dam"]
+transform = Transform3D(0.0190553, 0, -0.0281584, 0, 0.034, 0, 0.0281584, 0, 0.0190553, -39.1255, 4.89528, -20.7413)
+mesh = ExtResource("4_u3cyc")
+skeleton = NodePath("../..")
+
+[node name="kakhovka dam test 2" parent="dam" instance=ExtResource("5_m7jmp")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -52.196, 0)

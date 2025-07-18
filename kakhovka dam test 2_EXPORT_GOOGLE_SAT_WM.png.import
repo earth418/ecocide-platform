@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cpmnj0o2l5j1e"
+path.s3tc="res://.godot/imported/kakhovka dam test 2_EXPORT_GOOGLE_SAT_WM.png-39d4b3272a415080c8352e5da4cf1d94.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "ae9b4f6c8980c354428d5537d4b3a074"
+}
+
+[deps]
+
+source_file="res://kakhovka dam test 2_EXPORT_GOOGLE_SAT_WM.png"
+dest_files=["res://.godot/imported/kakhovka dam test 2_EXPORT_GOOGLE_SAT_WM.png-39d4b3272a415080c8352e5da4cf1d94.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://6gdup8g58jo7"]
+[gd_scene load_steps=10 format=3 uid="uid://6gdup8g58jo7"]
 
 [ext_resource type="Script" uid="uid://cc5rewlw7w611" path="res://main_tree.gd" id="1_fyqef"]
+[ext_resource type="Script" uid="uid://ckijk3wiwlbkk" path="res://ui.gd" id="1_m6e0p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fyqef"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="Theme" id="Theme_5ajho"]
 
@@ -33,13 +37,22 @@ Tree/font_sizes/font_size = 24
 Tree/fonts/font = SubResource("SystemFont_mi635")
 Tree/icons/arrow_collapsed = SubResource("ImageTexture_s8bxr")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6e0p"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
 [node name="Control" type="Control"]
+self_modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_m6e0p")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -47,6 +60,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 480.0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fyqef")
 
 [node name="list" type="VBoxContainer" parent="Panel"]
 visible = false
@@ -119,6 +133,7 @@ offset_top = 64.0
 offset_bottom = 1010.0
 grow_horizontal = 2
 theme = SubResource("Theme_mi635")
+theme_override_styles/panel = SubResource("StyleBoxFlat_m6e0p")
 script = ExtResource("1_fyqef")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
@@ -128,3 +143,13 @@ anchor_right = 1.0
 offset_bottom = 64.0
 grow_horizontal = 2
 theme = SubResource("Theme_5ajho")
+
+[node name="Viewport" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1440.0
+grow_horizontal = 0
+grow_vertical = 2
