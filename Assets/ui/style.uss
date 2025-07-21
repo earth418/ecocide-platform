@@ -1,0 +1,4 @@
+#Search > .unity-label {
+    align-self: auto;
+    min-width: 10px;
+}

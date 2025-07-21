@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/ui/style.uss?fileID=7433441132597879392&amp;guid=20325aa918b1ebc4eb887c46e616678a&amp;type=3#style" />
+    <ui:VisualElement style="flex-grow: 1; width: 25%; background-color: rgba(255, 255, 255, 0.56);">
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; height: 0%; max-height: 5%;">
+            <ui:Button text="Home" name="Home" style="width: 25%;" />
+            <ui:TextField label="Search" name="Search" max-length="-1" hide-placeholder-on-focus="false" multiline="false" style="flex-wrap: nowrap; max-width: 75%; flex-grow: 1;" />
+        </ui:VisualElement>
+        <ui:TreeView name="TreeView" />
+    </ui:VisualElement>
+</ui:UXML>
