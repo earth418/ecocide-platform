@@ -19,18 +19,13 @@ config/icon="res://icon.svg"
 
 Geodot="*res://addons/geodot/geodot.gd"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-
 [dotnet]
 
 project/assembly_name="Ecocide Platform"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/geodot/plugin.cfg")
+enabled=PackedStringArray("res://addons/cesium_godot/plugin.cfg", "res://addons/geodot/plugin.cfg")
 
 [input]
 
